@@ -4,18 +4,24 @@ GPIO.setmode(GPIO.BCM)
 
 rPin=21
 rPin_out=26
+rcounter=0.99
+rOld=1
 GPIO.setup(rPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 GPIO.setup(rPin_out,GPIO.OUT)
 rPWM=GPIO.PWM(rPin_out,100)
 
 gPin=20
 gPin_out=19
+gcounter=0.99
+gOld=1
 GPIO.setup(gPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 GPIO.setup(gPin_out,GPIO.OUT)
 gPWM=GPIO.PWM(gPin_out,100)
 
 bPin=16
 bPin_out=13
+bcounter=0.99
+bOld=1
 GPIO.setup(bPin,GPIO.IN,pull_up_down=GPIO.PUD_UP) 
 GPIO.setup(bPin_out,GPIO.OUT)
 bPWM=GPIO.PWM(bPin_out,100)
@@ -25,15 +31,27 @@ try:
         redRead=GPIO.input(rPin)
         greenRead=GPIO.input(gPin)
         blueRead=GPIO.input(bPin)
-        if redRead==0:
+        if redRead==1 and rOld==0:
             print("I am reading red")
-            GPIO.output(rPin_out,1)
-        if greenRead==0:
+            rPWM.start(rcounter)
+            rcounter *=1.58
+            if rcounter>95:
+                rcounter=0.99
+        if greenRead==0 and gOld==0:
             print("I am reading green")
-            GPIO.output(gPin_out,1)
-        if blueRead==0:
+            rPWM.start(gcounter)
+            gcounter *=1.58
+            if gcounter>95:
+                gcounter=0.99
+        if blueRead==0 and bOld==0:
             print("I am reading blue")
-            GPIO.output(bPin_out,1)
+            rPWM.start(bcounter)
+            bcounter *=1.58
+            if bcounter>95:
+                bcounter=0.99
+        rOld=redRead
+        gOld=greenRead
+        bOld=blueRead
         sleep (0.1)
 except KeyboardInterrupt:
     GPIO.cleanup()
