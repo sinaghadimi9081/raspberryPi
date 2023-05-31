@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(40,GPIO.OUT)
+mypwm = GPIO.PWM(40,100)
 try:
     while True:
-        print("tytytytyt")
-        GPIO.output(40,1)
+        mypwm.start(10)
 except KeyboardInterrupt:
     GPIO.cleanup()
