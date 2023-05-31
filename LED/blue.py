@@ -4,7 +4,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(40,GPIO.OUT)
 try:
     while True:
-        print("ty")
+        print("tytytytyt")
         GPIO.output(40,1)
 except KeyboardInterrupt:
     GPIO.cleanup()
