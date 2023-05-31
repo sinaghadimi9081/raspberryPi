@@ -5,19 +5,19 @@ GPIO.setmode(GPIO.BCM)
 rPin=21
 rPin_out=26
 GPIO.setup(rPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-GPIO.setup(rPin_out,GPIO.out)
+GPIO.setup(rPin_out,GPIO.OUT)
 rPWM=GPIO.PWM(rPin_out,100)
 
 gPin=20
 gPin_out=19
 GPIO.setup(gPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-GPIO.setup(gPin_out,GPIO.out)
+GPIO.setup(gPin_out,GPIO.OUT)
 gPWM=GPIO.PWM(gPin_out,100)
 
 bPin=16
 bPin_out=13
 GPIO.setup(bPin,GPIO.IN,pull_up_down=GPIO.PUD_UP) 
-GPIO.setup(bPin_out,GPIO.out)
+GPIO.setup(bPin_out,GPIO.OUT)
 bPWM=GPIO.PWM(bPin_out,100)
 
 try:
