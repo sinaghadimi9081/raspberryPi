@@ -31,9 +31,9 @@ try:
         redRead=GPIO.input(rPin)
         greenRead=GPIO.input(gPin)
         blueRead=GPIO.input(bPin)
-        rPWM.start(rcounter)
-        gPWM.start(gcounter)
-        bPWM.start(bcounter)
+        rPWM.start(rcounter-0.4)
+        gPWM.start(gcounter-0.4)
+        bPWM.start(bcounter-0.4)
         if redRead==1 and rOld==0:
             print("I am reading red")
             rcounter *=1.58
