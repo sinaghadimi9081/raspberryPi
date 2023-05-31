@@ -36,20 +36,20 @@ try:
             rcounter *=1.58
             if rcounter>95:
                 rcounter=0.99
-            rPWM.ChangeDutyCycle(rcounter)
-        if greenRead==0 and gOld==0:
+            rPWM.ChangeDutyCycle(int(rcounter))
+        if greenRead==1 and gOld==0:
             print("I am reading green")
             gcounter *=1.58
             if gcounter>95:
                 gcounter=0.99
-            gPWM.ChangeDutyCycle(gcounter)
-        if blueRead==0 and bOld==0:
+            gPWM.ChangeDutyCycle(int(gcounter))
+        if blueRead==1 and bOld==0:
             print("I am reading blue")
             rPWM.start(bcounter)
             bcounter *=1.58
             if bcounter>95:
                 bcounter=0.99
-            bPWM.ChangeDutyCycle(bcounter)
+            bPWM.ChangeDutyCycle(int(bcounter))
             
         rOld=redRead
         gOld=greenRead
