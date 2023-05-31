@@ -11,7 +11,7 @@ GPIO.setup(rPin_out,GPIO.OUT)
 rPWM=GPIO.PWM(rPin_out,100)
 
 gPin=20
-gPin_out=19
+gPin_out=5
 gcounter=0.99
 gOld=1
 GPIO.setup(gPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
