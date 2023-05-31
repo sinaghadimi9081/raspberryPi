@@ -5,6 +5,6 @@ GPIO.setup(40,GPIO.OUT)
 mypwm = GPIO.PWM(40,100)
 try:
     while True:
-        mypwm.start(10)
+        mypwm.start(50)
 except KeyboardInterrupt:
     GPIO.cleanup()
