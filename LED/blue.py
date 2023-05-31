@@ -1,9 +1,10 @@
 import RPi.GPIO as GPIO
 from time import sleep
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(40,GPIO.OUT)
 try:
     while True:
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(38,GPIO.OUT)
-        GPIO.output(38,1)
+        print("ty")
+        GPIO.output(40,1)
 except KeyboardInterrupt:
     GPIO.cleanup()
