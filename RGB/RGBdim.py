@@ -32,19 +32,19 @@ try:
         greenRead=GPIO.input(gPin)
         blueRead=GPIO.input(bPin)
         if redRead==1 and rOld==0:
-            print("I am reading red")
+            print(f"I am reading red {rcounter}")
             rcounter =rcounter*1.58
             if rcounter>95:
                 rcounter=0.99
             rPWM.ChangeDutyCycle(int(rcounter))
         if greenRead==1 and gOld==0:
-            print("I am reading green")
+            print(f"I am reading green {gcounter}")
             gcounter =gcounter*1.58
             if gcounter>95:
                 gcounter=0.99
             gPWM.ChangeDutyCycle(int(gcounter))
         if blueRead==1 and bOld==0:
-            print("I am reading blue")
+            print(f"I am reading blue {bcounter}")
             rPWM.start(bcounter)
             bcounter =bcounter*1.58
             if bcounter>95:
