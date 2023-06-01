@@ -2,24 +2,24 @@ import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BCM)
 
-rPin=21
-rPin_out=26
+rPin=40
+rPin_out=33
 rcounter=0.99
 rOld=1
 GPIO.setup(rPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 GPIO.setup(rPin_out,GPIO.OUT)
 rPWM=GPIO.PWM(rPin_out,100)
 
-gPin=20
-gPin_out=5
+gPin=38
+gPin_out=36
 gcounter=0.99
 gOld=1
 GPIO.setup(gPin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 GPIO.setup(gPin_out,GPIO.OUT)
 gPWM=GPIO.PWM(gPin_out,100)
 
-bPin=16
-bPin_out=13
+bPin=35
+bPin_out=37
 bcounter=0.99
 bOld=1
 GPIO.setup(bPin,GPIO.IN,pull_up_down=GPIO.PUD_UP) 
@@ -34,23 +34,22 @@ try:
         if redRead==1 and rOld==0:
             print(f"I am reading red {rcounter}")
             rcounter =rcounter*1.58
-            if rcounter>95:
+            if rcounter>98:
                 rcounter=0.99
             rPWM.ChangeDutyCycle(int(rcounter))
         if greenRead==1 and gOld==0:
             print(f"I am reading green {gcounter}")
             gcounter =gcounter*1.58
-            if gcounter>95:
+            if gcounter>98:
                 gcounter=0.99
             gPWM.ChangeDutyCycle(int(gcounter))
         if blueRead==1 and bOld==0:
             print(f"I am reading blue {bcounter}")
             rPWM.start(bcounter)
             bcounter =bcounter*1.58
-            if bcounter>95:
+            if bcounter>98:
                 bcounter=0.99
             bPWM.ChangeDutyCycle(int(bcounter))
-            
         rOld=redRead
         gOld=greenRead
         bOld=blueRead
