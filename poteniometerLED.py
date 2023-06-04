@@ -11,7 +11,7 @@ try:
     while True:
         analogVal=ADC0834.getResult(0)
         LED_PWM.ChangeDutyCycle(int(analogVal*0.33))
-        sleep(0.2)
+        sleep(0.05)
 except KeyboardInterrupt:
     GPIO.cleanup()
     
